@@ -73,19 +73,27 @@ class SistemTransportasi {
 //kendaraan
 const Bugati = new Mobil("Bugati");
 const beat = new Motor("Honda Beat");
+const vario = new Motor("Vario");
+const kijang = new Mobil("Kijang");
 
 //pelanggan
 const pelanggan1 = new Pelanggan("Chintya", "08968278192");
 const pelanggan2 = new Pelanggan("Hairulina", "089876521344");
+const pelanggan3 = new Pelanggan("Mirza", "08974125546");
+const pelanggan4 = new Pelanggan("Abil", "08942185711");
 
 //sewa kendaraan
 pelanggan1.sewaKendaraan(Bugati);
 pelanggan2.sewaKendaraan(beat);
+pelanggan3.sewaKendaraan(vario);
+pelanggan4.sewaKendaraan(kijang);
 
 //Masukkan ke sistem
 const sistem = new SistemTransportasi();
 sistem.tambahPelanggan(pelanggan1);
 sistem.tambahPelanggan(pelanggan2);
+sistem.tambahPelanggan(pelanggan3);
+sistem.tambahPelanggan(pelanggan4);
 
 //daftar pelanggan
 sistem.tampilkanPelanggan();
