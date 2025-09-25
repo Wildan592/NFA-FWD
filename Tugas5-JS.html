@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produk Toko Online</title>
+</head>
+
+<body>
+  <h2>Toko Online</h2>
+
+  <button id="tampilBtn">Tampilkan Produk</button>
+  <button id="tambahBtn">Tambah Produk</button>
+  <button id="hapusBtn">Hapus Produk</button>
+
+
+  <!-- Area untuk menampilkan daftar produk -->
+  <pre id="output"></pre>
+
+
+  <script>
+    //Data Produk
+    let produkList = [
+      { id: 1, nama: "Tas", harga: 800000 },
+      { id: 2, nama: "Kacamata", harga: 15000 },
+      { id: 3, nama: "Jam", harga: 70000 },
+      { id: 4, nama: "Sepatu", harga: 150000 },
+      { id: 5, nama: "Baju", harga: 250000 }
+    ];
+
+    //Menambahkan Produk dengan Spread Operator
+    function tambahProduk(id, nama, harga) {
+      const produkBaru = { id, nama, harga };
+      produkList = [...produkList, produkBaru];
+      alert(`Produk ${nama} berhasil ditambahkan`);
+    }
+
+    //Menghapus Produk dengan Rest Parameter
+    function hapusProduk(...ids) {
+      produkList = produkList.filter(p => !ids.includes(p.id));
+    }
+
+    //Menampilkan Produk dengan Destructuring
+    function tampilkanProduk() {
+      let teks = "Daftar Produk:\n";
+      produkList.forEach(({ id, nama, harga }) => {
+        teks += `${id}. ${nama} - Rp${harga}\n`;
+      });
+      document.getElementById("output").textContent = teks;
+    }
+
+    //Event Handler
+    const eventHandler = {
+      tampil: () => tampilkanProduk(),
+      tambah: () => {
+        tambahProduk(6, "Handphone", 8500000);
+        tampilkanProduk();
+      },
+      //hapus produk
+      hapus: () => {
+        hapusProduk(4);
+        tampilkanProduk();
+      }
+    };
+
+    //Event Listener
+    document.getElementById("tampilBtn").addEventListener("click", eventHandler.tampil);
+    document.getElementById("tambahBtn").addEventListener("click", eventHandler.tambah);
+    document.getElementById("hapusBtn").addEventListener("click", eventHandler.hapus);
+
+    tampilkanProduk();
+  </script>
+</body>
+
+</html>
