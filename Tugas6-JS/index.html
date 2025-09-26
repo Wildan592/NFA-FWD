@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Daftar Table User</h2>
+
+    <button id="btnTampil">Tampilkan Data</button>
+    <button id="btnTambah">Tambah Data</button>
+    <button id="btnHapus">Hapus Data</button>
+
+    <div id="kotak"></div>
+
+    <script type="module">
+        import { index, store, destroy } from "./controller.js";
+
+        // Event Listener
+        document.getElementById("btnTampil").addEventListener("click", () => {
+            index();
+        });
+
+        document.getElementById("btnTambah").addEventListener("click", () => {
+            // Tambahkan minimal 2 data
+            store({ nama: "Ikhsan", umur: 27, alamat: "Jl. Pabuaran", email: "san@mail.com" });
+            store({ nama: "Farras", umur: 17, alamat: "Jl. Keramat", email: "rass@mail.com" });
+            index();
+        });
+
+        document.getElementById("btnHapus").addEventListener("click", () => {
+            destroy();
+            index();
+        });
+
+        // tampilkan data awal saat halaman load
+        index();
+    </script>
+
+</body>
+</html>
